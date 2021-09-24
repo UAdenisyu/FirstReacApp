@@ -12,14 +12,14 @@ const App = () => {
 
     const data = [
         {label: "Going to learn React", important: false, id: 1},
-        {label: "The best framework ever", important: true, id: 2},
+        {label: "The best framework ever", important: false, id: 2},
         {label: "I really into learning React", important: false, id: 3},
-        {label: "Aslo i have just created my first React app", important: true, id: 4},
+        {label: "Aslo i have just created my first React app", important: false, id: 4}
     ];
 
     return (
         <div className="app">
-            <AppHeader/>
+            <AppHeader amount={data.length}/>
             <div className="search-panel d-flex">
                 <SearchPanel/>
                 <PostStatusFilter/>

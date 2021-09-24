@@ -15,7 +15,11 @@ const PostList = ({posts}) => {
                     <PostListItem {...itemProps}/>
                 </li>
             )
+        
         }
+        return (
+            0
+        )
     });
 
     function isEmpty(obj){
