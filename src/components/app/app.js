@@ -5,23 +5,20 @@ import SearchPanel from '../search-panel';
 import PostStatusFilter from '../post-status-filter';
 import PostList from '../post-list';
 import PostAddForm from '../post-add-form';
+import nextId from "react-id-generator";
 
 import './app.css';
 
 export default class App extends Component {
 
-    maxId = 5;
-
     state = {
         data: [
-            {label: "Going to learn React", important: false, id: 1},
-            {label: "The best framework ever", important: true, id: 2},
-            {label: "I really into learning React", important: false, id: 3},
-            {label: "Aslo i have just created my first React app", important: true, id: 4},
+            {label: "Going to learn React", important: false, id: nextId()},
+            {label: "The best framework ever", important: true, id: nextId()},
+            {label: "I really into learning React", important: false, id: nextId()},
+            {label: "Aslo i have just created my first React app", important: true, id: nextId()},
         ]
     }
-
- 
 
     deleteItem(id){
         console.log(id);
@@ -38,10 +35,11 @@ export default class App extends Component {
         const newItem = {
             label: body,
             important: false,
-            id: this.maxId++
+            id: nextId()
         }
         this.setState(({data}) => {
             const newArr = [...data, newItem];
+            console.log(newArr);
             return {
                 data: newArr
             } 
