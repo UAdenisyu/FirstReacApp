@@ -10,16 +10,18 @@ import './app.css';
 
 export default class App extends Component {
 
-
+    maxId = 5;
 
     state = {
         data: [
             {label: "Going to learn React", important: false, id: 1},
-            {label: "The best framework ever", important: true, id: "234"},
+            {label: "The best framework ever", important: true, id: 2},
             {label: "I really into learning React", important: false, id: 3},
             {label: "Aslo i have just created my first React app", important: true, id: 4},
         ]
     }
+
+ 
 
     deleteItem(id){
         console.log(id);
@@ -29,6 +31,20 @@ export default class App extends Component {
             return {
                 data: newArr
             }
+        });
+    }
+
+    addItem(body){
+        const newItem = {
+            label: body,
+            important: false,
+            id: this.maxId++
+        }
+        this.setState(({data}) => {
+            const newArr = [...data, newItem];
+            return {
+                data: newArr
+            } 
         });
     }
 
@@ -43,7 +59,8 @@ export default class App extends Component {
                 <PostList
                     posts={this.state.data}
                     onDelete={id => this.deleteItem(id)}/>
-                <PostAddForm/>
+                <PostAddForm
+                    onAdd={body => this.addItem(body)}/>
             </div>
         )
     }
